@@ -31,20 +31,4 @@ public class LocacaoService {
         return locacao;
 
     }
-
-    public static void main(String[] args) {
-
-        // cenario
-        LocacaoService service = new LocacaoService();
-        Usuario usuario = new Usuario("Usuario 1");
-        Filme filme = new Filme("Filme 1", 3, 5.0);
-
-        // acao
-        Locacao locacao = service.alugarFilme(usuario, filme);
-
-        // verificacao
-        System.out.println(locacao.getValor() == 6.0 );
-        System.out.println(DataUtils.ehMesmaData(locacao.getDataLocacao(), new Date()));
-        System.out.println(DataUtils.ehMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(2)));
-    }
 }
