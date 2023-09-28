@@ -49,7 +49,7 @@ public class DataUtils {
 	 * Verifica se uma data é igual a outra
 	 * 	Esta comparação considera apenas dia, mes e ano
 	 */
-	public static boolean isMesmaData(Date data1, Date data2) {
+	public static boolean ehMesmaData(Date data1, Date data2) {
 		Calendar calendar1 = Calendar.getInstance();
 		calendar1.setTime(data1);
 		Calendar calendar2 = Calendar.getInstance();

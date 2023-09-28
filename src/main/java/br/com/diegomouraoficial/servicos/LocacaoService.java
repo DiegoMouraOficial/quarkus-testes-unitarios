@@ -3,6 +3,7 @@ package br.com.diegomouraoficial.servicos;
 import br.com.diegomouraoficial.entidades.Filme;
 import br.com.diegomouraoficial.entidades.Locacao;
 import br.com.diegomouraoficial.entidades.Usuario;
+import br.com.diegomouraoficial.utilitaria.DataUtils;
 
 import java.util.Date;
 
@@ -27,9 +28,23 @@ public class LocacaoService {
         // Salvando a locacao...
 
         //TODO adicionar metodo para salvar
-
-
         return locacao;
 
+    }
+
+    public static void main(String[] args) {
+
+        // cenario
+        LocacaoService service = new LocacaoService();
+        Usuario usuario = new Usuario("Usuario 1");
+        Filme filme = new Filme("Filme 1", 3, 5.0);
+
+        // acao
+        Locacao locacao = service.alugarFilme(usuario, filme);
+
+        // verificacao
+        System.out.println(locacao.getValor() == 6.0 );
+        System.out.println(DataUtils.ehMesmaData(locacao.getDataLocacao(), new Date()));
+        System.out.println(DataUtils.ehMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(2)));
     }
 }
