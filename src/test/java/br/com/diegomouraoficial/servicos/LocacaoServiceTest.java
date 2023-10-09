@@ -5,8 +5,15 @@ import br.com.diegomouraoficial.entidades.Locacao;
 import br.com.diegomouraoficial.entidades.Usuario;
 import br.com.diegomouraoficial.utilitaria.DataUtils;
 import io.quarkus.test.junit.QuarkusTest;
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
-import org.wildfly.common.Assert;
+
+import static br.com.diegomouraoficial.utilitaria.DataUtils.ehMesmaData;
+import static br.com.diegomouraoficial.utilitaria.DataUtils.obterDataComDiferencaDias;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 import java.util.Date;
 
@@ -24,8 +31,9 @@ public class LocacaoServiceTest {
         Locacao locacao = service.alugarFilme(usuario, filme);
 
         // verificacao
-        Assert.assertTrue(locacao.getValor() == 5.0 );
-        Assert.assertTrue(DataUtils.ehMesmaData(locacao.getDataLocacao(), new Date()));
-        Assert.assertTrue(DataUtils.ehMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
+        assertThat(locacao.getValor(), is(equalTo(5.0)));
+        assertThat(locacao.getValor(), is(not(6.0)));
+        assertThat(ehMesmaData(locacao.getDataLocacao(), new Date()), is(true));
+        assertThat(ehMesmaData(locacao.getDataRetorno(), obterDataComDiferencaDias(1)), is(true));
     }
 }

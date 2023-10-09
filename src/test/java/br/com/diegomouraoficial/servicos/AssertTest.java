@@ -2,7 +2,6 @@ package br.com.diegomouraoficial.servicos;
 
 import br.com.diegomouraoficial.entidades.Usuario;
 import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
