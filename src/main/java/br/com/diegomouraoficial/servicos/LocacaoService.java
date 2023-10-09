@@ -11,10 +11,14 @@ import static br.com.diegomouraoficial.utilitaria.DataUtils.adicionarDias;
 
 public class LocacaoService {
 
-    public Locacao alugarFilme(Usuario usuario, Filme filme) {
+    public Locacao alugarFilme(Usuario usuario, Filme filme) throws Exception {
+        
+        // Lancando excessao, caso nao tenha filme em estoque
+        if(filme.getEstoque() == 0) {
+            throw new Exception("Filme sem estoque");
+        }
 
         Locacao locacao = new Locacao();
-
         locacao.setFilme(filme);
         locacao.setUsuario(usuario);
         locacao.setDataLocacao(new Date());
